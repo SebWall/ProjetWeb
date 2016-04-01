@@ -32,7 +32,7 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {  
     }  
   
-    public Utilisateur( final String firstname, final String lastname,final String login, final String password, final Adresse listeAdresse, Adresse Adresse, Adresse ArrayList ) {  
+    public Utilisateur( final String firstname, final String lastname,final String login, final String password, final ArrayList<Adresse> listeAdresse ) {  
         this.firstname = firstname; 
         this.lastname = lastname; 
         this.login = login;  
@@ -93,7 +93,7 @@ public class Utilisateur implements Serializable {
     }
 
     public void setListeAdresse(Collection<Adresse> listeAdresse) {
-        this.listeAdresse = listeAdresse;
+        this.listeAdresse = (ArrayList<Adresse>) listeAdresse;
     }
 
     
