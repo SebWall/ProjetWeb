@@ -78,16 +78,27 @@
   </div>
         <!-- Fin du menu -->  
     <div id="adresse">
-            Ajouter une adresse :
+        <li>    Ajouter une adresse :
         <form action="ServletUsers" method="get">  
+                login utilisateur : <input type="text" name="login" value="${a.UTILISATEUR_ID}"/><br> 
                 Numero de rue : <input type="number" name="numRue" value="${a.numeroRue}"/><br>  
                 Nom de la rue : <input type="text" name="nomRue" value=" ${a.nomRue}"/><br>  
-                Code Postal : <input type="number" name="codePostal" value="${a.codePostal} "/><br> 
+                Code Postal : <input type="number" name="cd" value="${a.codePostal} "/><br> 
                 Ville : <input type="text" name="Ville" value="${a.nomVille} "/><br> 
                 Pays : <input type="text" name="Pays" value="${a.nomPays} "/><br> 
                 <input type="hidden" name="action" value="ajouterAdresse"/>  
                 <input type="submit" value="Ajouter" name="submit"/>  
-            </form>  
+         </form> 
+        </li>     
+                <li><a href="ServletUsers?action=listerLesAdresses">Lister les adresses :</a></li>  
+           <li> Lister les adresses pour un utilisateur :    
+           <form action="ServletUsers" method="get">  
+                login utilisateur : <input type="text" name="login" value="${u.login}"/><br>  
+                <input type="hidden" name="action" value="AdresseUser"/>  
+                <input type="submit" value="Chercher" name="submit"/>  
+         </form>  
+           </li>    
+                
     </div>        
         <!-- Numero de page -->
         
@@ -105,9 +116,7 @@
        
         <div id="tableau">
         <table class="listing">  
-            
-           
-            
+                        
         <c:if test="${param['action'] == 'listerLesUtilisateurs'}" >  
             <h2>Liste des utilisateurs</h2>  
             <tr>  
@@ -127,6 +136,44 @@
                         <td>${u.firstname}</td>  
                         <td>${u.lastname}</td>  
                       
+                        <!-- On compte le nombre de users -->  
+                        <c:set var="total" value="${total+1}"/>  
+                    </tr>  
+                </c:forEach>  
+  
+                <!-- Affichage du solde total dans la dernière ligne du tableau -->  
+                <tr><td><b>TOTAL</b></td><td><b>${total}</b></td><td></td></tr>  
+  
+        </c:if>  
+        </table>
+        </div>   
+        
+        <div id="tableauAdresse">
+        <table class="listing">  
+                        
+        <c:if test="${param['action'] == 'listerLesAdresses'}" >  
+            <h2>Liste des adresses</h2>  
+            <tr>  
+                <th>Numero de rue</th>  
+                <th>Nom de la rue</th>  
+                <th>Code Postal</th>  
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Login utilisateur</th>
+            </tr>  
+                <!-- La ligne de titre du tableau des comptes -->  
+                <!-- Ici on affiche les lignes, une par utilisateur -->  
+                <!-- cette variable montre comment on peut utiliser JSTL et EL pour calculer -->  
+                <c:set var="total" value="0"/>  
+  
+                <c:forEach var="a" items="${requestScope['listeDesAdresses']}">  
+                    <tr>  
+                        <td>${a.numeroRue}</td>  
+                        <td>${a.nomRue}</td>  
+                        <td>${a.codePostal}</td> 
+                        <td>${a.nomVille}</td> 
+                        <td>${a.nomPays}</td> 
+                        <td>${a.loginUser}</td> 
                         <!-- On compte le nombre de users -->  
                         <c:set var="total" value="${total+1}"/>  
                     </tr>  

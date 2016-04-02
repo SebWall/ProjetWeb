@@ -27,9 +27,10 @@ public class Adresse implements Serializable {
     
     private String numeroRue;  
     private String nomRue;  
-    private String CodePostal;  
+    private String codePostal;  
     private String nomVille;
     private String nomPays;
+    private String loginUser;
     
     @ManyToOne
     private Utilisateur utilisateur;
@@ -38,14 +39,23 @@ public class Adresse implements Serializable {
      public Adresse( ) {
 
     }
+    public Adresse(String numeroRue, String nomRue, String codePostal, String nomVille, String nomPays) {
+        this.numeroRue = numeroRue;
+        this.nomRue = nomRue;
+        this.codePostal = codePostal;
+        this.nomVille = nomVille;
+        this.nomPays = nomPays;
+    }
+     
      //constructeur complet
-     public Adresse( String numeroRue, String nomRue, String CodePostal, String nomVille, String nomPays) {
+     public Adresse( String numeroRue, String nomRue, String codePostal, String nomVille, String nomPays, String loginUser) {
 
         this.numeroRue = numeroRue;
         this.nomRue = nomRue;
-        this.CodePostal = CodePostal;
+        this.codePostal = codePostal;
         this.nomVille = nomVille;
         this.nomPays = nomPays;
+        this.loginUser = loginUser;
     }
 /////////////////////////GETTER & SETTER//////////////////////////////////////////////////
 
@@ -63,7 +73,7 @@ public class Adresse implements Serializable {
     }
 
     public String getCodePostal() {
-        return CodePostal;
+        return codePostal;
     }
 
     public String getNomVille() {
@@ -83,7 +93,7 @@ public class Adresse implements Serializable {
     }
 
     public void setCodePostal(String CodePostal) {
-        this.CodePostal = CodePostal;
+        this.codePostal = codePostal;
     }
 
     public void setNomVille(String nomVille) {
@@ -94,7 +104,6 @@ public class Adresse implements Serializable {
         this.nomPays = nomPays;
     }
     
-    
     public Long getId() {
         return id;
     }
@@ -102,6 +111,15 @@ public class Adresse implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+   public String getLoginUser() {
+        return loginUser;
+    }
+
+    public void setLoginUser(String loginUser) {
+        this.loginUser = loginUser;
+    }
+    
 ////////////////////////////////METHODES/////////////////////////////////////
     @Override
     public int hashCode() {

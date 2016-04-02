@@ -25,7 +25,11 @@ public class GestionnaireUtilisateurs {
         Query q = em.createQuery("select u from Utilisateur u");
         return q.getResultList();
     }
-
+    public Collection<Adresse> getAllAdresses() {
+        Query q = em.createQuery("select a from Adresse a");
+        return q.getResultList();
+    }
+    
     public void creerUtilisateursDeTest() {
         creeUtilisateur("John", "Lennon", "jlennon","mdp");
         creeUtilisateur("Paul", "Mac Cartney", "pmc","mdp");
@@ -94,7 +98,12 @@ public class GestionnaireUtilisateurs {
         Query q = em.createQuery("select distinct u from Utilisateur u where u.login='" + login + "'");
         return q.getResultList();
     }
-    
+     public Collection<Adresse> getAdresseUser(String login) {
+        Query q = em.createQuery("select a from Adresse a where a.loginUser='" + login + "'");
+        return q.getResultList();
+    }
+     
+//////////////////////////// TEST LOGIN PASSWORD //////////////////////////////
     public boolean testLogin(String login ) {
        
         //On teste de récuperer l'utilisateur correspondant au login envoyé par l'utilisateur
@@ -178,7 +187,9 @@ public class GestionnaireUtilisateurs {
     public void businessMethod() {
     }
 
-   
+    public Collection<Adresse> getAdresseUser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
 }

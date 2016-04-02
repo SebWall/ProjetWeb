@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import utilisateurs.gestionnaires.GestionnaireUtilisateurs;
+import utilisateurs.modeles.Adresse;
 import utilisateurs.modeles.Utilisateur;
 
 /**
@@ -128,18 +129,35 @@ public class ServletUsers extends HttpServlet {
                
                 String numRue =  request.getParameter("numRue");
                 String nomRue = request.getParameter("nomRue");
-                String codePostal = request.getParameter("CodePostal");
+                String cd = request.getParameter("cd");
                 String Ville = request.getParameter("Ville");
                 String Pays = request.getParameter("Pays");
                 
-                gestionnaireUtilisateurs.creeAdresse(numRue, nomRue, codePostal, Ville, Pays);
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();
-                request.setAttribute("listeDesUsers", liste);
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";
-                message = "Liste des utilisateurs";
+                gestionnaireUtilisateurs.creeAdresse(numRue, nomRue, cd, Ville, Pays);
+                Collection<Adresse> listeAdresse = gestionnaireUtilisateurs.getAllAdresses();
+                request.setAttribute("listeDesAdresses", listeAdresse);
+                forwardTo = "index.jsp?action=listerLesAdresses";
+                message = "Liste des adresses";
                 RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
-                dp.forward(request, response);
+                dp.forward(request, response); 
                 
+            } 
+            else if (action.equals("listerLesAdresses")) {
+                Collection<Adresse> listeAdresse = gestionnaireUtilisateurs.getAllAdresses();
+                request.setAttribute("listeDesAdresses", listeAdresse);
+                forwardTo = "index.jsp?action=listerLesAdresses";
+                message = "Liste des adresses";
+                RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
+                dp.forward(request, response); 
+            } 
+            else if (action.equals("AdresseUser")) {
+                String login = request.getParameter("login");
+                Collection<Adresse> listeAdresse = gestionnaireUtilisateurs.getAdresseUser(login);
+                request.setAttribute("listeDesAdresses", listeAdresse);
+                forwardTo = "index.jsp?action=listerLesAdresses";
+                message = "Liste des adresses";
+                RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
+                dp.forward(request, response); 
             } 
 ///////////////////////////////////////// PAGINATION ////////////////////////////////////////
             else if (action.equals("pagination1a10")) {
