@@ -77,7 +77,18 @@
         </ol>  
   </div>
         <!-- Fin du menu -->  
-        
+    <div id="adresse">
+            Ajouter une adresse :
+        <form action="ServletUsers" method="get">  
+                Numero de rue : <input type="number" name="numRue" value="${a.numeroRue}"/><br>  
+                Nom de la rue : <input type="text" name="nomRue" value=" ${a.nomRue}"/><br>  
+                Code Postal : <input type="number" name="codePostal" value="${a.codePostal} "/><br> 
+                Ville : <input type="text" name="Ville" value="${a.nomVille} "/><br> 
+                Pays : <input type="text" name="Pays" value="${a.nomPays} "/><br> 
+                <input type="hidden" name="action" value="ajouterAdresse"/>  
+                <input type="submit" value="Ajouter" name="submit"/>  
+            </form>  
+    </div>        
         <!-- Numero de page -->
         
         <div id="numPage">
@@ -115,14 +126,14 @@
                         <td>${u.login}</td>  
                         <td>${u.firstname}</td>  
                         <td>${u.lastname}</td>  
-                        <td>${u.listeAdresse}</td>
+                      
                         <!-- On compte le nombre de users -->  
                         <c:set var="total" value="${total+1}"/>  
                     </tr>  
                 </c:forEach>  
   
                 <!-- Affichage du solde total dans la dernière ligne du tableau -->  
-                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}</b></td><td></td></tr>  
+                <tr><td><b>TOTAL</b></td><td><b>${total}</b></td><td></td></tr>  
   
         </c:if>  
         </table>

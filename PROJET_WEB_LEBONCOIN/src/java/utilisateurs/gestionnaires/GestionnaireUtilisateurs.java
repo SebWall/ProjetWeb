@@ -27,7 +27,7 @@ public class GestionnaireUtilisateurs {
     }
 
     public void creerUtilisateursDeTest() {
-        creeUtilisateur("John", "Lennon", "jlennon","mdp",Collection<Adresse>);
+        creeUtilisateur("John", "Lennon", "jlennon","mdp");
         creeUtilisateur("Paul", "Mac Cartney", "pmc","mdp");
         creeUtilisateur("Ringo", "Starr", "rstarr","mdp");
         creeUtilisateur("Georges", "Harisson", "georgesH","mdp");
@@ -65,14 +65,14 @@ public class GestionnaireUtilisateurs {
         creeUtilisateur("Oliver", "Mine", "ut30","mdp");
     }
    
-    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String password, Adresse listeAdresse) {
-        Utilisateur u = new Utilisateur(nom, prenom, login, password, listeAdresse);
+    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String password) {
+        Utilisateur u = new Utilisateur(nom, prenom, login, password );
         em.persist(u);
         return u;
     }
 
-     public Adresse creeAdresse(int numeroRue, String nomRue, int codePostal, String nomVille, String nomPays) {
-        Adresse a = new Adresse(numeroRue, nomRue, codePostal, nomVille, nomPays);
+     public Adresse creeAdresse (String numRue, String nomRue, String codePostal, String Ville, String Pays) {
+        Adresse a = new Adresse(numRue, nomRue, codePostal, Ville, Pays);
         em.persist(a);
         return a;
     }
@@ -177,6 +177,8 @@ public class GestionnaireUtilisateurs {
     
     public void businessMethod() {
     }
+
+   
 
 
 }

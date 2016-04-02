@@ -123,6 +123,24 @@ public class ServletUsers extends HttpServlet {
                 RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
                 dp.forward(request, response);        
             } 
+//////////////////////////////ADRESSE//////////////////////////////
+             else if (action.equals("ajouterAdresse")) {
+               
+                String numRue =  request.getParameter("numRue");
+                String nomRue = request.getParameter("nomRue");
+                String codePostal = request.getParameter("CodePostal");
+                String Ville = request.getParameter("Ville");
+                String Pays = request.getParameter("Pays");
+                
+                gestionnaireUtilisateurs.creeAdresse(numRue, nomRue, codePostal, Ville, Pays);
+                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();
+                request.setAttribute("listeDesUsers", liste);
+                forwardTo = "index.jsp?action=listerLesUtilisateurs";
+                message = "Liste des utilisateurs";
+                RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
+                dp.forward(request, response);
+                
+            } 
 ///////////////////////////////////////// PAGINATION ////////////////////////////////////////
             else if (action.equals("pagination1a10")) {
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.pagination1a10();

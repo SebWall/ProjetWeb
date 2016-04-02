@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.metamodel.SingularAttribute;
 import utilisateurs.modeles.Adresse;
 /**
@@ -26,12 +27,20 @@ public class Utilisateur implements Serializable {
     private String login;  
     private String password;
 
-    private ArrayList<Adresse> listeAdresse = new ArrayList<Adresse>();
+    @OneToMany (mappedBy = "utilisateur")
+    private ArrayList<Adresse> listeAdresse ;
     
 //////////////////// CONSTRUCTEURS /////////////////////
     public Utilisateur() {  
     }  
-  
+    //constructeur sans adresse
+  public Utilisateur( final String firstname, final String lastname,final String login, final String password) {  
+        this.firstname = firstname; 
+        this.lastname = lastname; 
+        this.login = login;  
+        this.password = password;
+    }  
+// constructeurs avec les adresses
     public Utilisateur( final String firstname, final String lastname,final String login, final String password, final ArrayList<Adresse> listeAdresse ) {  
         this.firstname = firstname; 
         this.lastname = lastname; 
@@ -88,14 +97,13 @@ public class Utilisateur implements Serializable {
         this.password = password;
     }
 
-    public Collection<Adresse> getListeAdresse() {
+    public ArrayList<Adresse> getListeAdresse() {
         return listeAdresse;
     }
 
-    public void setListeAdresse(Collection<Adresse> listeAdresse) {
-        this.listeAdresse = (ArrayList<Adresse>) listeAdresse;
+    public void setListeAdresse(ArrayList<Adresse> listeAdresse) {
+        this.listeAdresse = listeAdresse;
     }
-
     
 //////////////// METHODES /////////////////////////
     

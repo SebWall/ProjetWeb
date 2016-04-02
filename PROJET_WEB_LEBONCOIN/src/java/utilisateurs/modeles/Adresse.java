@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,13 +25,21 @@ public class Adresse implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private int numeroRue;  
+    private String numeroRue;  
     private String nomRue;  
-    private int CodePostal;  
+    private String CodePostal;  
     private String nomVille;
-     private String nomPays;
+    private String nomPays;
+    
+    @ManyToOne
+    private Utilisateur utilisateur;
 ////////////////////////CONSTRUCTEURS///////////////////////////////////////////////
-    public Adresse( int numeroRue, String nomRue, int CodePostal, String nomVille, String nomPays) {
+    //constructeur par défaut
+     public Adresse( ) {
+
+    }
+     //constructeur complet
+     public Adresse( String numeroRue, String nomRue, String CodePostal, String nomVille, String nomPays) {
 
         this.numeroRue = numeroRue;
         this.nomRue = nomRue;
@@ -44,7 +53,8 @@ public class Adresse implements Serializable {
         return serialVersionUID;
     }
 
-    public int getNumeroRue() {
+
+    public String getNumeroRue() {
         return numeroRue;
     }
 
@@ -52,7 +62,7 @@ public class Adresse implements Serializable {
         return nomRue;
     }
 
-    public int getCodePostal() {
+    public String getCodePostal() {
         return CodePostal;
     }
 
@@ -64,7 +74,7 @@ public class Adresse implements Serializable {
         return nomPays;
     }
 
-    public void setNumeroRue(int numeroRue) {
+    public void setNumeroRue(String numeroRue) {
         this.numeroRue = numeroRue;
     }
 
@@ -72,7 +82,7 @@ public class Adresse implements Serializable {
         this.nomRue = nomRue;
     }
 
-    public void setCodePostal(int CodePostal) {
+    public void setCodePostal(String CodePostal) {
         this.CodePostal = CodePostal;
     }
 
@@ -115,7 +125,7 @@ public class Adresse implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Adresse[ id=" + id + " ]";
+        return "utilisateurs.modeles.Adresse[ id=" + id + " ]";
     }
     
 }
