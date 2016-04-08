@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import utilisateurs.modeles.Adresse;
+import utilisateurs.modeles.Produit;
 import utilisateurs.modeles.Utilisateur;
 
 
@@ -29,45 +30,11 @@ public class GestionnaireUtilisateurs {
         Query q = em.createQuery("select a from Adresse a");
         return q.getResultList();
     }
+     public Collection<Produit> getAllProduits() {
+        Query q = em.createQuery("select p from Produit p");
+        return q.getResultList();
+    }
     
-    public void creerUtilisateursDeTest() {
-        creeUtilisateur("John", "Lennon", "jlennon","mdp");
-        creeUtilisateur("Paul", "Mac Cartney", "pmc","mdp");
-        creeUtilisateur("Ringo", "Starr", "rstarr","mdp");
-        creeUtilisateur("Georges", "Harisson", "georgesH","mdp");
-    }
-    public void creer30UtilisateursDeTest() {
-        creeUtilisateur("Damian", "Marley", "ut1","mdp");
-        creeUtilisateur("Marvin", "Renollet", "ut2","mdp");
-        creeUtilisateur("Calvin", "Vilmon", "ut3","mdp");
-        creeUtilisateur("Leo", "Amelot", "ut4","mdp");
-        creeUtilisateur("Maxime", "Dhaussy", "ut5","mdp");
-        creeUtilisateur("Serena", "Waldorf", "ut6","mdp");
-        creeUtilisateur("Blair", "Van Der Woodsen","ut7","mdp");
-        creeUtilisateur("David", "Starr", "ut8","mdp");
-        creeUtilisateur("Enzo", "Ford", "ut9","mdp");
-        creeUtilisateur("Ben", "Humfrey", "ut10","mdp");
-        creeUtilisateur("John", "Sanchez", "ut11","mdp");
-        creeUtilisateur("Jean", "Tex", "ut12","mdp");
-        creeUtilisateur("Nou", "Riche", "ut13","mdp");
-        creeUtilisateur("Chuck", "Bass", "ut14","mdp");
-        creeUtilisateur("Nate", "Harchibald", "ut15","mdp");
-        creeUtilisateur("Levelly", "Blake", "ut16","mdp");
-        creeUtilisateur("Marc", "MichMich", "ut17","mdp");
-        creeUtilisateur("Franck", "Jean", "ut18","mdp");
-        creeUtilisateur("Sebastien", "Wallart", "ut19","mdp");
-        creeUtilisateur("Aurelien", "Souville", "ut20","mdp");
-        creeUtilisateur("Olive", "Dutrou", "ut21","mdp");
-        creeUtilisateur("Victor", "Billie", "ut22","mdp");
-        creeUtilisateur("Xavier", "Farrant", "ut23","mdp");
-        creeUtilisateur("Cyril", "Hanouna", "ut24","mdp");
-        creeUtilisateur("Jack", "Chirac", "ut25","mdp");
-        creeUtilisateur("Walter", "White", "ut26","mdp");
-        creeUtilisateur("Tuco", "Salamanca", "ut27","mdp");
-        creeUtilisateur("Mitch", "Lucker", "ut28","mdp");
-        creeUtilisateur("Si", "Nock", "ut29","mdp");
-        creeUtilisateur("Oliver", "Mine", "ut30","mdp");
-    }
    
     public Utilisateur creeUtilisateur(String nom, String prenom, String login, String password) {
         Utilisateur u = new Utilisateur(nom, prenom, login, password );
@@ -103,7 +70,7 @@ public class GestionnaireUtilisateurs {
         return q.getResultList();
     }
      
-//////////////////////////// TEST LOGIN PASSWORD //////////////////////////////
+///////////////////////////////////// TEST LOGIN PASSWORD ////////////////////////////////////////
     public boolean testLogin(String login ) {
        
         //On teste de récuperer l'utilisateur correspondant au login envoyé par l'utilisateur
@@ -183,7 +150,46 @@ public class GestionnaireUtilisateurs {
         q.setFirstResult(40);
         return q.getResultList();
     }
-    
+///////////////////////////UTILISATEURS DE TESTS//////////////////////////////
+    public void creerUtilisateursDeTest() {
+        creeUtilisateur("John", "Lennon", "jlennon","mdp");
+        creeUtilisateur("Paul", "Mac Cartney", "pmc","mdp");
+        creeUtilisateur("Ringo", "Starr", "rstarr","mdp");
+        creeUtilisateur("Georges", "Harisson", "georgesH","mdp");
+    }
+    public void creer30UtilisateursDeTest() {
+        creeUtilisateur("Damian", "Marley", "ut1","mdp");
+        creeUtilisateur("Marvin", "Renollet", "ut2","mdp");
+        creeUtilisateur("Calvin", "Vilmon", "ut3","mdp");
+        creeUtilisateur("Leo", "Amelot", "ut4","mdp");
+        creeUtilisateur("Maxime", "Dhaussy", "ut5","mdp");
+        creeUtilisateur("Serena", "Waldorf", "ut6","mdp");
+        creeUtilisateur("Blair", "Van Der Woodsen","ut7","mdp");
+        creeUtilisateur("David", "Starr", "ut8","mdp");
+        creeUtilisateur("Enzo", "Ford", "ut9","mdp");
+        creeUtilisateur("Ben", "Humfrey", "ut10","mdp");
+        creeUtilisateur("John", "Sanchez", "ut11","mdp");
+        creeUtilisateur("Jean", "Tex", "ut12","mdp");
+        creeUtilisateur("Nou", "Riche", "ut13","mdp");
+        creeUtilisateur("Chuck", "Bass", "ut14","mdp");
+        creeUtilisateur("Nate", "Harchibald", "ut15","mdp");
+        creeUtilisateur("Levelly", "Blake", "ut16","mdp");
+        creeUtilisateur("Marc", "MichMich", "ut17","mdp");
+        creeUtilisateur("Franck", "Jean", "ut18","mdp");
+        creeUtilisateur("Sebastien", "Wallart", "ut19","mdp");
+        creeUtilisateur("Aurelien", "Souville", "ut20","mdp");
+        creeUtilisateur("Olive", "Dutrou", "ut21","mdp");
+        creeUtilisateur("Victor", "Billie", "ut22","mdp");
+        creeUtilisateur("Xavier", "Farrant", "ut23","mdp");
+        creeUtilisateur("Cyril", "Hanouna", "ut24","mdp");
+        creeUtilisateur("Jack", "Chirac", "ut25","mdp");
+        creeUtilisateur("Walter", "White", "ut26","mdp");
+        creeUtilisateur("Tuco", "Salamanca", "ut27","mdp");
+        creeUtilisateur("Mitch", "Lucker", "ut28","mdp");
+        creeUtilisateur("Si", "Nock", "ut29","mdp");
+        creeUtilisateur("Oliver", "Mine", "ut30","mdp");
+    }
+///////////////////////////////////////////////////////////////// 
     public void businessMethod() {
     }
 

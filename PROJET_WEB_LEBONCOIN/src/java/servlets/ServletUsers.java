@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import utilisateurs.gestionnaires.GestionnaireUtilisateurs;
 import utilisateurs.modeles.Adresse;
+import utilisateurs.modeles.Produit;
 import utilisateurs.modeles.Utilisateur;
 
 /**
@@ -159,7 +160,15 @@ public class ServletUsers extends HttpServlet {
                 RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
                 dp.forward(request, response); 
             } 
-            
+/////////////////////////////////////////PRODUITS///////////////////////////////////////////
+            else if (action.equals("listerLesProduits")) {
+                Collection<Produit> listeProduit = gestionnaireUtilisateurs.getAllProduits();
+                request.setAttribute("listeDesProduits", listeProduit);
+                forwardTo = "index.jsp?action=listerLesProduits";
+                message = "Liste des produits";
+                RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
+                dp.forward(request, response); 
+            } 
 ///////////////////////////////////////// PAGINATION ////////////////////////////////////////
             else if (action.equals("pagination1a10")) {
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.pagination1a10();

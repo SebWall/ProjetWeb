@@ -30,7 +30,7 @@
                 </li>
                 <li><a href="#">Produits</a>
                         <ul>
-                                <li><a href="#">Afficher tous les produits</a></li>
+                                <li><a href="ServletUsers?action=listerLesProduits">Afficher tous les produits</a></li>
                                 <li><a href="#">Gérer les produits</a></li>
                         </ul>
                 </li>
