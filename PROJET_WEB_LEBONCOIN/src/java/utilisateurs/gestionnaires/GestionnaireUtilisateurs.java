@@ -75,8 +75,8 @@ public class GestionnaireUtilisateurs {
         return u;
     }
 
-     public Adresse creeAdresse (String numRue, String nomRue, String codePostal, String Ville, String Pays) {
-        Adresse a = new Adresse(numRue, nomRue, codePostal, Ville, Pays);
+     public Adresse creeAdresse (String numRue, String nomRue, String codePostal, String Ville, String Pays, String loginUser) {
+        Adresse a = new Adresse(numRue, nomRue, codePostal, Ville, Pays, loginUser);
         em.persist(a);
         return a;
     }

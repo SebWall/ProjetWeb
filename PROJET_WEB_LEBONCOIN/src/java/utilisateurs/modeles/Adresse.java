@@ -31,6 +31,7 @@ public class Adresse implements Serializable {
     private String nomVille;
     private String nomPays;
     private String loginUser;
+   // private String UTILISATEUR_ID;
     
     @ManyToOne
     private Utilisateur utilisateur;
@@ -47,7 +48,7 @@ public class Adresse implements Serializable {
         this.nomPays = nomPays;
     }
      
-     //constructeur complet
+     //constructeur avec loginUser
      public Adresse( String numeroRue, String nomRue, String codePostal, String nomVille, String nomPays, String loginUser) {
 
         this.numeroRue = numeroRue;
@@ -57,6 +58,16 @@ public class Adresse implements Serializable {
         this.nomPays = nomPays;
         this.loginUser = loginUser;
     }
+     //constructeur avec login et utilisateurID
+   /*  public Adresse( String numeroRue, String nomRue, String codePostal, String nomVille, String nomPays, String loginUser, String UTILISATEUR_ID) {
+        this.numeroRue = numeroRue;
+        this.nomRue = nomRue;
+        this.codePostal = codePostal;
+        this.nomVille = nomVille;
+        this.nomPays = nomPays;
+        this.loginUser = loginUser;
+        this.UTILISATEUR_ID = UTILISATEUR_ID;
+    }*/
 /////////////////////////GETTER & SETTER//////////////////////////////////////////////////
 
     public static long getSerialVersionUID() {
@@ -112,14 +123,23 @@ public class Adresse implements Serializable {
         this.id = id;
     }
 
-   public String getLoginUser() {
+    public String getLoginUser() {
         return loginUser;
     }
 
     public void setLoginUser(String loginUser) {
         this.loginUser = loginUser;
     }
-    
+/*
+    public String getUTILISATEUR_ID() {
+        return UTILISATEUR_ID;
+    }
+
+    public void setUTILISATEUR_ID(String UTILISATEUR_ID) {
+        this.UTILISATEUR_ID = UTILISATEUR_ID;
+    }
+*/
+
 ////////////////////////////////METHODES/////////////////////////////////////
     @Override
     public int hashCode() {

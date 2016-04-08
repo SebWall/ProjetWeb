@@ -15,7 +15,7 @@
     </head>  
     <body>  
         <jsp:include page="header.jsp"/>  
-      
+        <jsp:include page="menuDeroulant.jsp"/>  
           
         <h1>${param.title}</h1>  
       

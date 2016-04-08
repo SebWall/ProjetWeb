@@ -96,7 +96,7 @@ public class ServletUsers extends HttpServlet {
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.chercherParLogin(login);
                 request.setAttribute("listeDesUsers", liste);
                 forwardTo = "index.jsp?action=listerLesUtilisateurs";
-                message = "Liste des utilisateurs avec le login";
+                message = "Liste des utilisateurs avec le login "+ login+" :";
                 RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
                 dp.forward(request, response);
                 
@@ -126,14 +126,14 @@ public class ServletUsers extends HttpServlet {
             } 
 //////////////////////////////ADRESSE//////////////////////////////
              else if (action.equals("ajouterAdresse")) {
-               
+                String loginUser =  request.getParameter("loginUser");
                 String numRue =  request.getParameter("numRue");
                 String nomRue = request.getParameter("nomRue");
                 String cd = request.getParameter("cd");
                 String Ville = request.getParameter("Ville");
                 String Pays = request.getParameter("Pays");
                 
-                gestionnaireUtilisateurs.creeAdresse(numRue, nomRue, cd, Ville, Pays);
+                gestionnaireUtilisateurs.creeAdresse(numRue, nomRue, cd, Ville, Pays, loginUser);
                 Collection<Adresse> listeAdresse = gestionnaireUtilisateurs.getAllAdresses();
                 request.setAttribute("listeDesAdresses", listeAdresse);
                 forwardTo = "index.jsp?action=listerLesAdresses";
@@ -155,10 +155,11 @@ public class ServletUsers extends HttpServlet {
                 Collection<Adresse> listeAdresse = gestionnaireUtilisateurs.getAdresseUser(login);
                 request.setAttribute("listeDesAdresses", listeAdresse);
                 forwardTo = "index.jsp?action=listerLesAdresses";
-                message = "Liste des adresses";
+                message = "Liste des adresses de l'utilisateur ayant le login "+ login+" :";
                 RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);
                 dp.forward(request, response); 
             } 
+            
 ///////////////////////////////////////// PAGINATION ////////////////////////////////////////
             else if (action.equals("pagination1a10")) {
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.pagination1a10();

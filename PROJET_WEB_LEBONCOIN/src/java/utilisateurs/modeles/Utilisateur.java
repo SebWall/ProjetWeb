@@ -26,12 +26,21 @@ public class Utilisateur implements Serializable {
     private String lastname;  
     private String login;  
     private String password;
+    private String mail;
+    private String tel;
 
     @OneToMany (mappedBy = "utilisateur")
     private ArrayList<Adresse> listeAdresse ;
     
 //////////////////// CONSTRUCTEURS /////////////////////
     public Utilisateur() {  
+    }  
+    public Utilisateur( final String firstname, final String lastname,final String login, final String password, final String mail, final String tel) {  
+        this.firstname = firstname; 
+        this.lastname = lastname; 
+        this.login = login;  
+        this.password = password;
+        this.mail=mail;
     }  
     //constructeur sans adresse
   public Utilisateur( final String firstname, final String lastname,final String login, final String password) {  
@@ -104,9 +113,25 @@ public class Utilisateur implements Serializable {
     public void setListeAdresse(ArrayList<Adresse> listeAdresse) {
         this.listeAdresse = listeAdresse;
     }
-    
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+       public String getMail() {
+        return mail;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+       
+       
 //////////////// METHODES /////////////////////////
-    
+  
 
     @Override
     public boolean equals(Object object) {
